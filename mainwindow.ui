@@ -1,0 +1,1078 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>850</width>
+    <height>556</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>821</width>
+      <height>531</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="wzlLogo">
+         <property name="minimumSize">
+          <size>
+           <width>180</width>
+           <height>90</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>180</width>
+           <height>90</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">image: url(:/Logo/Image/wzlLogo.png);</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="infoLogo">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;ControlBox&lt;br&gt;OPC UA Server&lt;br&gt;Version 1.1&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QTabWidget" name="tabWidget">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(235, 235, 235);</string>
+       </property>
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="serverTab">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <attribute name="title">
+         <string>Server</string>
+        </attribute>
+        <widget class="QPushButton" name="startServerButton">
+         <property name="geometry">
+          <rect>
+           <x>580</x>
+           <y>160</y>
+           <width>221</width>
+           <height>91</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Start Server</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="stopServerButton">
+         <property name="geometry">
+          <rect>
+           <x>580</x>
+           <y>260</y>
+           <width>221</width>
+           <height>91</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Stop Server</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="logLabel">
+         <property name="geometry">
+          <rect>
+           <x>40</x>
+           <y>20</y>
+           <width>481</width>
+           <height>151</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255);</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="log_lineEdit">
+         <property name="geometry">
+          <rect>
+           <x>80</x>
+           <y>200</y>
+           <width>331</width>
+           <height>131</height>
+          </rect>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="digitaltab">
+        <attribute name="title">
+         <string>Digital</string>
+        </attribute>
+        <widget class="QPushButton" name="DigitalSaveButton">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>340</y>
+           <width>806</width>
+           <height>50</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Save Settings</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="DigitalInputTitle">
+         <property name="geometry">
+          <rect>
+           <x>470</x>
+           <y>9</y>
+           <width>268</width>
+           <height>25</height>
+          </rect>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>14</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Input</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="Switch" name="DigitalOutput4_switch" native="true">
+         <property name="geometry">
+          <rect>
+           <x>137</x>
+           <y>180</y>
+           <width>131</width>
+           <height>50</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>50</height>
+          </size>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="DigitalOutput1_LineEdit">
+         <property name="geometry">
+          <rect>
+           <x>137</x>
+           <y>54</y>
+           <width>131</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Input 1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="QLabel" name="DigitalOutputTitle">
+         <property name="geometry">
+          <rect>
+           <x>70</x>
+           <y>9</y>
+           <width>268</width>
+           <height>25</height>
+          </rect>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>14</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Output</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="Switch" name="DigitalOutput1_switch" native="true">
+         <property name="geometry">
+          <rect>
+           <x>137</x>
+           <y>89</y>
+           <width>131</width>
+           <height>50</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>50</height>
+          </size>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="DigitalOutput4_LineEdit">
+         <property name="geometry">
+          <rect>
+           <x>137</x>
+           <y>145</y>
+           <width>131</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Input 4</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="Switch" name="DigitalOutput3_switch" native="true">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>180</y>
+           <width>131</width>
+           <height>50</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>50</height>
+          </size>
+         </property>
+        </widget>
+        <widget class="Switch" name="DigitalOutput0_switch" native="true">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>89</y>
+           <width>131</width>
+           <height>50</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>50</height>
+          </size>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="DigitalOutput0_LineEdit">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>54</y>
+           <width>131</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Output 0</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="DigitalOutput3_LineEdit">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>145</y>
+           <width>131</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Input 3</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="Switch" name="DigitalOutput7_switch" native="true">
+         <property name="geometry">
+          <rect>
+           <x>208</x>
+           <y>270</y>
+           <width>131</width>
+           <height>50</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>50</height>
+          </size>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="DigitalOutput6_LineEdit">
+         <property name="geometry">
+          <rect>
+           <x>70</x>
+           <y>235</y>
+           <width>131</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Input 6</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="Switch" name="DigitalOutput6_switch" native="true">
+         <property name="geometry">
+          <rect>
+           <x>70</x>
+           <y>270</y>
+           <width>131</width>
+           <height>50</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>50</height>
+          </size>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="DigitalOutput7_LineEdit">
+         <property name="geometry">
+          <rect>
+           <x>208</x>
+           <y>235</y>
+           <width>131</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Input 7</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="Switch" name="DigitalOutput5_switch" native="true">
+         <property name="geometry">
+          <rect>
+           <x>275</x>
+           <y>180</y>
+           <width>131</width>
+           <height>50</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>50</height>
+          </size>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="DigitalOutput2_LineEdit">
+         <property name="geometry">
+          <rect>
+           <x>275</x>
+           <y>54</y>
+           <width>131</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Input 2</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="Switch" name="DigitalOutput2_switch" native="true">
+         <property name="geometry">
+          <rect>
+           <x>275</x>
+           <y>89</y>
+           <width>131</width>
+           <height>50</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>50</height>
+          </size>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="DigitalOutput5_LineEdit">
+         <property name="geometry">
+          <rect>
+           <x>275</x>
+           <y>145</y>
+           <width>131</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Input 5</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Digital_4_Indicator">
+         <property name="geometry">
+          <rect>
+           <x>547</x>
+           <y>180</y>
+           <width>131</width>
+           <height>50</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">image: url(:/Icon/Image/grayIndicator.png);</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="DigitalInput4_LineEdit">
+         <property name="geometry">
+          <rect>
+           <x>547</x>
+           <y>145</y>
+           <width>131</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Input 4</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="DigitalInput1_LineEdit">
+         <property name="geometry">
+          <rect>
+           <x>547</x>
+           <y>54</y>
+           <width>131</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Input 1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Digital_0_Indicator">
+         <property name="geometry">
+          <rect>
+           <x>410</x>
+           <y>89</y>
+           <width>131</width>
+           <height>50</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">image: url(:/Icon/Image/grayIndicator.png);</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Digital_1_Indicator">
+         <property name="geometry">
+          <rect>
+           <x>547</x>
+           <y>89</y>
+           <width>131</width>
+           <height>50</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">image: url(:/Icon/Image/grayIndicator.png);</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Digital_3_Indicator">
+         <property name="geometry">
+          <rect>
+           <x>410</x>
+           <y>180</y>
+           <width>131</width>
+           <height>50</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">image: url(:/Icon/Image/grayIndicator.png);</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="DigitalInput3_LineEdit">
+         <property name="geometry">
+          <rect>
+           <x>410</x>
+           <y>145</y>
+           <width>131</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Input 3</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="DigitalInput0_LineEdit">
+         <property name="geometry">
+          <rect>
+           <x>410</x>
+           <y>54</y>
+           <width>131</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Input 0</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Digital_2_Indicator">
+         <property name="geometry">
+          <rect>
+           <x>682</x>
+           <y>89</y>
+           <width>131</width>
+           <height>50</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">image: url(:/Icon/Image/grayIndicator.png);</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="DigitalInput2_LineEdit">
+         <property name="geometry">
+          <rect>
+           <x>682</x>
+           <y>54</y>
+           <width>131</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Input 2</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="DigitalInput5_LineEdit">
+         <property name="geometry">
+          <rect>
+           <x>682</x>
+           <y>145</y>
+           <width>131</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Input 5</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Digital_5_Indicator">
+         <property name="geometry">
+          <rect>
+           <x>682</x>
+           <y>180</y>
+           <width>131</width>
+           <height>50</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">image: url(:/Icon/Image/grayIndicator.png);</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Digital_6_Indicator">
+         <property name="geometry">
+          <rect>
+           <x>479</x>
+           <y>270</y>
+           <width>131</width>
+           <height>50</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">image: url(:/Icon/Image/grayIndicator.png);</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="DigitalInput6_LineEdit">
+         <property name="geometry">
+          <rect>
+           <x>479</x>
+           <y>235</y>
+           <width>131</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Input 6</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="DigitalInput7_LineEdit">
+         <property name="geometry">
+          <rect>
+           <x>616</x>
+           <y>235</y>
+           <width>131</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Input 7</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Digital_7_Indicator">
+         <property name="geometry">
+          <rect>
+           <x>616</x>
+           <y>270</y>
+           <width>131</width>
+           <height>50</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">image: url(:/Icon/Image/grayIndicator.png);</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="analogTab">
+        <attribute name="title">
+         <string>Analog</string>
+        </attribute>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>Switch</class>
+   <extends>QWidget</extends>
+   <header>UIclass/switch.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

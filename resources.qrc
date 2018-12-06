@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/Icon">
+        <file>Image/grayIndicator.png</file>
+        <file>Image/greenIndicator.png</file>
+        <file>Image/orangeIndicator.png</file>
+        <file>Image/redIndicator.png</file>
+        <file>Image/blueIndicator.png</file>
+        <file>Image/yellowIndicator.png</file>
+    </qresource>
+    <qresource prefix="/Logo">
+        <file>Image/wzlLogo.png</file>
+    </qresource>
+</RCC>
