@@ -6,6 +6,8 @@
 #include <QWaitCondition>
 #include <QDebug>
 #include <QObject>
+#include "open62541.h"
+#include "digitaloutputmodule.h"
 
 //! [0]
 class ControlBoxServer : public QThread{
@@ -14,9 +16,10 @@ class ControlBoxServer : public QThread{
 public:
     ControlBoxServer(QObject *parent=0);
     ~ControlBoxServer();
-    void transaction(const QString &portName, int waitTimeout, const QString &request);
+    void startServer();
     void run();
     void stopServer();
+    void addDigitalOutputModule(DigitalOutputModule *digitalOutputModule);
 
 signals:
     void response(const QString &s);
@@ -24,8 +27,8 @@ signals:
     void timeout(const QString &s);
 
 private:
-    QString portName;
-    QString request;
+    UA_Server *server;
+    UA_ServerConfig *config;
     int waitTimeout;
     QMutex mutex;
     QWaitCondition cond;

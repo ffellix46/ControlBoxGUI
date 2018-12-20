@@ -88,82 +88,126 @@
         <attribute name="title">
          <string>Server</string>
         </attribute>
-        <widget class="QPushButton" name="startServerButton">
+        <widget class="QTextEdit" name="log_textEdit">
          <property name="geometry">
           <rect>
-           <x>580</x>
-           <y>160</y>
-           <width>221</width>
-           <height>91</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Start Server</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="stopServerButton">
-         <property name="geometry">
-          <rect>
-           <x>580</x>
-           <y>260</y>
-           <width>221</width>
-           <height>91</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Stop Server</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="logLabel">
-         <property name="geometry">
-          <rect>
-           <x>40</x>
+           <x>10</x>
            <y>20</y>
-           <width>481</width>
-           <height>151</height>
+           <width>561</width>
+           <height>351</height>
           </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
          </property>
          <property name="styleSheet">
           <string notr="true">background-color: rgb(255, 255, 255);</string>
          </property>
-         <property name="text">
-          <string/>
-         </property>
         </widget>
-        <widget class="QLineEdit" name="log_lineEdit">
+        <widget class="QWidget" name="layoutWidget">
          <property name="geometry">
           <rect>
-           <x>80</x>
-           <y>200</y>
-           <width>331</width>
-           <height>131</height>
+           <x>578</x>
+           <y>20</y>
+           <width>231</width>
+           <height>351</height>
           </rect>
          </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <item>
+               <widget class="QLabel" name="ip_label">
+                <property name="text">
+                 <string>   IP: </string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="ip_lineEdit">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="text">
+                 <string>169.254.147.152</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <item>
+               <widget class="QLabel" name="port_label">
+                <property name="text">
+                 <string>Port:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="port_lineEdit">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="text">
+                 <string>4840</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="startServerButton">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Start Server</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="stopServerButton">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Stop Server</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </widget>
        <widget class="QWidget" name="digitaltab">
         <attribute name="title">
          <string>Digital</string>
         </attribute>
-        <widget class="QPushButton" name="DigitalSaveButton">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>340</y>
-           <width>806</width>
-           <height>50</height>
-          </rect>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>50</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Save Settings</string>
-         </property>
-        </widget>
         <widget class="QLabel" name="DigitalInputTitle">
          <property name="geometry">
           <rect>
@@ -709,39 +753,6 @@
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QLineEdit" name="DigitalInput1_LineEdit">
-         <property name="geometry">
-          <rect>
-           <x>547</x>
-           <y>54</y>
-           <width>131</width>
-           <height>29</height>
-          </rect>
-         </property>
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>150</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Input 1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
         <widget class="QLabel" name="Digital_0_Indicator">
          <property name="geometry">
           <rect>
@@ -752,7 +763,7 @@
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">image: url(:/Icon/Image/grayIndicator.png);</string>
+          <string notr="true">image: url(:/Icon/Image/redIndicator.png);</string>
          </property>
          <property name="text">
           <string/>
@@ -818,39 +829,6 @@
          </property>
          <property name="text">
           <string>Input 3</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="DigitalInput0_LineEdit">
-         <property name="geometry">
-          <rect>
-           <x>410</x>
-           <y>54</y>
-           <width>131</width>
-           <height>29</height>
-          </rect>
-         </property>
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>150</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Input 0</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -1051,6 +1029,134 @@
          <property name="text">
           <string/>
          </property>
+        </widget>
+        <widget class="QComboBox" name="DigitalInput0_ComboBox">
+         <property name="geometry">
+          <rect>
+           <x>410</x>
+           <y>54</y>
+           <width>131</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <item>
+          <property name="text">
+           <string>Machine Status</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Process Status</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Door Status</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Clamping Status</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Spindle Status</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Coolant Status</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Waste Container Status</string>
+          </property>
+         </item>
+        </widget>
+        <widget class="QComboBox" name="DigitalInput1_ComboBox">
+         <property name="geometry">
+          <rect>
+           <x>547</x>
+           <y>54</y>
+           <width>131</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <item>
+          <property name="text">
+           <string>Machine Status</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Process Status</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Door Status</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Clamping Status</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Spindle Status</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Coolant Status</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Waste Container Status</string>
+          </property>
+         </item>
+        </widget>
+        <widget class="QWidget" name="layoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>340</y>
+           <width>811</width>
+           <height>52</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QPushButton" name="DigitalSaveButton">
+            <property name="minimumSize">
+             <size>
+              <width>600</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Save Settings</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="helpButton">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Help</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </widget>
        <widget class="QWidget" name="analogTab">

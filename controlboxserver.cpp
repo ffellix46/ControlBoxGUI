@@ -7,8 +7,8 @@
  */
 
 #include "controlboxserver.h"
-#include "open62541.h"
 #include <QTime>
+#include <QDateTime>
 #include "/usr/include/signal.h"
 
 QT_USE_NAMESPACE
@@ -18,6 +18,9 @@ UA_Boolean running=true;
 ControlBoxServer::ControlBoxServer(QObject *parent)
     : QThread(parent), waitTimeout(0), quit(false)
 {
+
+    config=UA_ServerConfig_new_default();
+    server=UA_Server_new(config);
 
 //    UA_ServerConfig *config = UA_ServerConfig_new_default();
 //    UA_Server *server = UA_Server_new(config);
@@ -43,14 +46,14 @@ ControlBoxServer::~ControlBoxServer()
 //! [0]
 
 //! [1] //! [2]
-void ControlBoxServer::transaction(const QString &portName, int waitTimeout, const QString &request)
+void ControlBoxServer::startServer()
 {
-    //! [1]
-    QMutexLocker locker(&mutex);
-    this->portName = portName;
-    this->waitTimeout = waitTimeout;
-    this->request = request;
-    //! [3]
+//    //! [1]
+//    QMutexLocker locker(&mutex);
+//    this->portName = portName;
+//    this->waitTimeout = waitTimeout;
+//    this->request = request;
+//    //! [3]
     if (!isRunning())
         start();
     else
@@ -61,38 +64,27 @@ void ControlBoxServer::transaction(const QString &portName, int waitTimeout, con
 //! [4]
 void ControlBoxServer::run()
 {
-    bool currentPortNameChanged = false;
-
-    mutex.lock();
-    //! [4] //! [5]
-    QString currentPortName;
-    if (currentPortName != portName) {
-        currentPortName = portName;
-        currentPortNameChanged = true;
-    }
-
-    int currentWaitTimeout = waitTimeout;
-    QString currentRequest = request;
-    mutex.unlock();
-    //! [5] //! [6]
-    UA_ServerConfig *config = UA_ServerConfig_new_default();
-    UA_Server *server = UA_Server_new(config);
+    running=true;
 
     while (!quit) {
         //![6] //! [7]
-        if (currentPortNameChanged) {
-            emit response("Running...");
+
+        if (running) {
+            emit response("["+QDateTime::currentDateTime().toString()+"] TCP network layer listening on opc.tcp://raspberrypi:4840/");
 
             UA_StatusCode retval = UA_Server_run(server,&running);
+            UA_Server_delete(server);
+            UA_ServerConfig_delete(config);
 
             if (retval != UA_STATUSCODE_GOOD) {
-                emit error("Can't open %1, error code %2");
+                emit error("Can't open server, error code 1");
                 return;
             }
             //! [7] //! [8]
             // send log info
 
-            QString response(retval);
+
+//            QString response(retval);
 
 //            emit this->response(response);
 //            emit timeout(tr("Wait read response timeout %1")
@@ -100,17 +92,6 @@ void ControlBoxServer::run()
         }
 
 
-        mutex.lock();
-        cond.wait(&mutex);
-        if (currentPortName != portName) {
-            currentPortName = portName;
-            currentPortNameChanged = true;
-        } else {
-            currentPortNameChanged = false;
-        }
-        currentWaitTimeout = waitTimeout;
-        currentRequest = request;
-        mutex.unlock();
     }
     //! [13]
 }
@@ -118,5 +99,12 @@ void ControlBoxServer::run()
 void ControlBoxServer::stopServer()
 {
     running=false;
+    emit response("["+QDateTime::currentDateTime().toString()+"] Shutting down the TCP network layer");
 
+}
+
+//Digital Output Module
+
+void ControlBoxServer::addDigitalOutputModule(DigitalOutputModule *digitalOutputModule){
+    digitalOutputModule->addDigitalOutputVariable(server);
 }
