@@ -74,31 +74,46 @@ void DigitalOutputModule::addDigitalOutputVariable(UA_Server *server) {
                                 UA_QUALIFIEDNAME(1, "Digital Output Node"), UA_NODEID_NUMERIC(0, UA_NS0ID_BASEOBJECTTYPE),
                                 digitalOutputAttr, NULL, &digitalOutputId);
 
-        UA_DataSource digitalOutputDataZero;
-        digitalOutputDataZero.read = readCurrentDigitalOutputZero;
-        digitalOutputDataZero.write = writeCurrentDigitalOutputZero;
+
+        UA_DataSource digitalOutputData[]={};
+
+        digitalOutputData[0].read = readCurrentDigitalOutput;
+        digitalOutputData[0].write = writeCurrentDigitalOutput;
 
         UA_VariableAttributes statuDO0Attr = UA_VariableAttributes_default;
         UA_Boolean statusDO0 = false;
         UA_Variant_setScalar(&statuDO0Attr.value, &statusDO0, &UA_TYPES[UA_TYPES_BOOLEAN]);
-        statuDO0Attr.displayName = UA_LOCALIZEDTEXT("en-US", "Status DO0");
+        statuDO0Attr.displayName = UA_LOCALIZEDTEXT("en-US", "Open Door");
         statuDO0Attr.accessLevel = UA_ACCESSLEVELMASK_READ | UA_ACCESSLEVELMASK_WRITE;
         UA_Server_addDataSourceVariableNode(server, currentNodeId, digitalOutputId,
-                                            parentReferenceNodeId, UA_QUALIFIEDNAME(1, "Status DO0"),
+                                            parentReferenceNodeId, UA_QUALIFIEDNAME(1, "Open Door"),
                                             variableTypeNodeId, statuDO0Attr,
-                                            digitalOutputDataZero, NULL, NULL);
+                                            digitalOutputData[0], NULL, NULL);
+
+//        digitalOutputData[1].read = readCurrentDigitalOutput;
+//        digitalOutputData[1].write = writeCurrentDigitalOutput;
+
+//        UA_VariableAttributes statuDO0Attr = UA_VariableAttributes_default;
+//        UA_Boolean statusDO0 = false;
+//        UA_Variant_setScalar(&statuDO0Attr.value, &statusDO0, &UA_TYPES[UA_TYPES_BOOLEAN]);
+//        statuDO0Attr.displayName = UA_LOCALIZEDTEXT("en-US", "Open Door");
+//        statuDO0Attr.accessLevel = UA_ACCESSLEVELMASK_READ | UA_ACCESSLEVELMASK_WRITE;
+//        UA_Server_addDataSourceVariableNode(server, currentNodeId, digitalOutputId,
+//                                            parentReferenceNodeId, UA_QUALIFIEDNAME(1, "Open Door"),
+//                                            variableTypeNodeId, statuDO0Attr,
+//                                            digitalOutputData[1], NULL, NULL);
 
 
 }
 
-UA_StatusCode DigitalOutputModule::readCurrentDigitalOutputZero(UA_Server *server,
+UA_StatusCode DigitalOutputModule::readCurrentDigitalOutput(UA_Server *server,
                 const UA_NodeId *sessionId, void *sessionContext,
                 const UA_NodeId *nodeId, void *nodeContext,
                 UA_Boolean sourceTimeStamp, const UA_NumericRange *range,
                 UA_DataValue *dataValue) {
 
     UA_Boolean statusDO0;
-    if(digitalRead(DIGITAL_OUTPUT_BASE+DO0))
+    if(digitalRead(DIGITAL_OUTPUT_BASE+openDoor))
         statusDO0=false;
     else
         statusDO0=true;
@@ -109,16 +124,16 @@ UA_StatusCode DigitalOutputModule::readCurrentDigitalOutputZero(UA_Server *serve
 }
 
 
-UA_StatusCode DigitalOutputModule::writeCurrentDigitalOutputZero(UA_Server *server,
+UA_StatusCode DigitalOutputModule::writeCurrentDigitalOutput(UA_Server *server,
                  const UA_NodeId *sessionId, void *sessionContext,
                  const UA_NodeId *nodeId, void *nodeContext,
                  const UA_NumericRange *range, const UA_DataValue *data) {
 
 
-    if(digitalRead(DIGITAL_OUTPUT_BASE+DO0)){
-        digitalWrite(DIGITAL_OUTPUT_BASE+DO0,0); //ON
+    if(digitalRead(DIGITAL_OUTPUT_BASE+openDoor)){
+        digitalWrite(DIGITAL_OUTPUT_BASE+openDoor,0); //ON
     }else{
-        digitalWrite(DIGITAL_OUTPUT_BASE+DO0,1); //OFF
+        digitalWrite(DIGITAL_OUTPUT_BASE+openDoor,1); //OFF
     }
 
     UA_LOG_INFO(UA_Log_Stdout, UA_LOGCATEGORY_USERLAND,
@@ -127,6 +142,5 @@ UA_StatusCode DigitalOutputModule::writeCurrentDigitalOutputZero(UA_Server *serv
 
     return UA_STATUSCODE_GOOD;
 }
-
 
 

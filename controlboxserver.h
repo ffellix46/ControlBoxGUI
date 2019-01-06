@@ -8,6 +8,7 @@
 #include <QObject>
 #include "open62541.h"
 #include "digitaloutputmodule.h"
+#include "digitalinputmodule.h"
 
 //! [0]
 class ControlBoxServer : public QThread{
@@ -20,6 +21,7 @@ public:
     void run();
     void stopServer();
     void addDigitalOutputModule(DigitalOutputModule *digitalOutputModule);
+    void addDigitalInputModule(DigitalInputModule *digitalInputModule);
 
 signals:
     void response(const QString &s);

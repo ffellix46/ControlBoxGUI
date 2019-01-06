@@ -108,3 +108,9 @@ void ControlBoxServer::stopServer()
 void ControlBoxServer::addDigitalOutputModule(DigitalOutputModule *digitalOutputModule){
     digitalOutputModule->addDigitalOutputVariable(server);
 }
+
+//Digital Input Module
+
+void ControlBoxServer::addDigitalInputModule(DigitalInputModule *digitalInputModule){
+    digitalInputModule->addDigitalInputVariable(server);
+}

@@ -30,13 +30,16 @@ SOURCES += main.cpp\
     UIclass/switch.cpp \
     digitaloutputmodule.cpp \
     open62541.c \
-    controlboxserver.cpp
+    controlboxserver.cpp \
+    digitalinputmodule.cpp
 
 HEADERS  += mainwindow.h \
     UIclass/switch.h \
     digitaloutputmodule.h \
     open62541.h \
-    controlboxserver.h
+    controlboxserver.h \
+    typedefinitions.h \
+    digitalinputmodule.h
 
 FORMS    += mainwindow.ui
 

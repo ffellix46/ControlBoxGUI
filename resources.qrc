@@ -10,4 +10,16 @@
     <qresource prefix="/Logo">
         <file>Image/wzlLogo.png</file>
     </qresource>
+    <qresource prefix="/Button">
+        <file>Image/cancelButton.png</file>
+        <file>Image/addRowButton.png</file>
+        <file>Image/deleteRowButton.png</file>
+        <file>Image/closeButton.png</file>
+        <file>Image/rectangleButton.png</file>
+        <file>Image/helpButton.png</file>
+        <file>Image/hand-grip.png</file>
+        <file>Image/key.png</file>
+        <file>Image/process.png</file>
+        <file>Image/input.png</file>
+    </qresource>
 </RCC>
