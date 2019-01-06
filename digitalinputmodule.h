@@ -27,11 +27,11 @@ public:
     DigitalInputModule();
     static bool readInputState(int port);
     static void addDigitalInputVariable(UA_Server *server);
+    static void updateInput(UA_Server *server, char *status);
 
 private:
     int fd_digital_input = 0;
     void digitalInputSetUp();
-    static void updateInput(UA_Server *server);
     static UA_StatusCode readCurrentDigitalInput(UA_Server *server,
                     const UA_NodeId *sessionId, void *sessionContext,
                     const UA_NodeId *nodeId, void *nodeContext,

@@ -40,29 +40,30 @@ void DigitalInputModule::addDigitalInputVariable(UA_Server *server) {
     digitalInputData[0].read = readCurrentDigitalInput;
     digitalInputData[0].write = writeCurrentDigitalInput;
 
-    UA_VariableAttributes statuDI0Attr = UA_VariableAttributes_default;
-    UA_NodeId statusNodeId = UA_NODEID_STRING(1, "Status-DI0");
-    UA_Boolean statusDI0 = false;
-    UA_Variant_setScalar(&statuDI0Attr.value, &statusDI0, &UA_TYPES[UA_TYPES_BOOLEAN]);
-    statuDI0Attr.displayName = UA_LOCALIZEDTEXT("en-US", "Status DI0");
-    statuDI0Attr.accessLevel = UA_ACCESSLEVELMASK_READ;
-//    UA_Server_addVariableNode(server, statusNodeId, digitalInputId,
-//                                        parentReferenceNodeId, UA_QUALIFIEDNAME(1, "Status-DI0"),
-//                                        variableTypeNodeId, statuDI0Attr, NULL, NULL);
+    UA_VariableAttributes machineStatusAttr = UA_VariableAttributes_default;
+    UA_NodeId statusNodeId = UA_NODEID_STRING(1, "Machine-Status");
+    UA_String machineStatus = UA_STRING("NotConnected");
+    UA_Variant_setScalar(&machineStatusAttr.value, &machineStatus, &UA_TYPES[UA_TYPES_STRING]);
+    machineStatusAttr.displayName = UA_LOCALIZEDTEXT("en-US", "Machine Status");
+    machineStatusAttr.accessLevel = UA_ACCESSLEVELMASK_READ;
+    UA_Server_addVariableNode(server, statusNodeId, digitalInputId,
+                                        parentReferenceNodeId, UA_QUALIFIEDNAME(1, "Machine-Status"),
+                                        variableTypeNodeId, machineStatusAttr, NULL, NULL);
 
-//    updateInput(server);
-    UA_Server_addDataSourceVariableNode(server, currentNodeId, digitalInputId,
-                                        parentReferenceNodeId, UA_QUALIFIEDNAME(1, "Status-DI0"),
-                                        variableTypeNodeId, statuDI0Attr,
-                                        digitalInputData[0], NULL, NULL);
+    //updateInput(server,"Off");
+//    UA_Server_addDataSourceVariableNode(server, currentNodeId, digitalInputId,
+//                                        parentReferenceNodeId, UA_QUALIFIEDNAME(1, "Status-DI0"),
+//                                        variableTypeNodeId, statuDI0Attr,
+//                                        digitalInputData[0], NULL, NULL);
 }
 
-void DigitalInputModule::updateInput(UA_Server *server) {
-    qDebug()<<"update";
-    UA_Boolean statusDI0 = digitalRead(DIGITAL_INPUT_BASE);
+void DigitalInputModule::updateInput(UA_Server *server,char *status) {
+    qDebug()<<status;
+    UA_String machineStatus = UA_STRING(status);
+    //UA_Boolean statusDI0 = readInputState(0);
     UA_Variant value;
-    UA_Variant_setScalar(&value, &statusDI0, &UA_TYPES[UA_TYPES_BOOLEAN]);
-    UA_NodeId currentNodeId = UA_NODEID_STRING(1, "Status-DI0");;
+    UA_Variant_setScalar(&value, &machineStatus, &UA_TYPES[UA_TYPES_STRING]);
+    UA_NodeId currentNodeId = UA_NODEID_STRING(1, "Machine-Status");;
     UA_Server_writeValue(server, currentNodeId, value);
 }
 

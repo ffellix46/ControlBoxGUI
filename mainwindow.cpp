@@ -17,15 +17,10 @@ MainWindow::MainWindow(QWidget *parent) :
     timer = new QTimer(this);
 
     setupTable();
-
-
-    //The Digital Tab
-    //ReadUserSavedVariable_DigitalTab();
+    isServer=false;
 
     connect(timer, SIGNAL(timeout()), this, SLOT(updateIconStatus()));
     timer->start(1000);
-
-
 
 
 
@@ -35,33 +30,6 @@ MainWindow::~MainWindow()
 {
     controlBoxServer->stopServer();
     delete ui;
-}
-
-void MainWindow::updateIconStatus() //on_TimerTimeout()
-{
-    timer->stop();
-    //qDebug()<<"Timeout";
-
-    bool inStatusVector[8];
-    for(int i=0;i<8;i++){
-        inStatusVector[i]=digitalInputModule->readInputState(i);
-    }
-
-    machineInputStatus->readStatusVector(inStatusVector);
-
-    if(isStatus->isMachineStatus){
-        machineInputStatus->updateStatusVector();
-        if(machineInputStatus->indicatorRed)
-            ui->inputTable->item(inputstatusItem->machineStatusItem,2)->setBackgroundColor(colors->colorRed);
-        else if(machineInputStatus->indicatorYellow)
-            ui->inputTable->item(inputstatusItem->machineStatusItem,2)->setBackgroundColor(colors->colorYellow);
-        else if(machineInputStatus->indicatorGreen)
-            ui->inputTable->item(inputstatusItem->machineStatusItem,2)->setBackgroundColor(colors->colorGreen);
-        else
-            ui->inputTable->item(inputstatusItem->machineStatusItem,2)->setBackgroundColor(colors->colorGray);
-    }
-
-    timer->start(1000);
 }
 
 void MainWindow::writeInLog(QString message)
@@ -102,6 +70,7 @@ void MainWindow::on_startServerButton_clicked()
     controlBoxServer->addDigitalOutputModule(digitalOutputModule);
     controlBoxServer->addDigitalInputModule(digitalInputModule);
 
+    isServer=true;
 
 }
 
@@ -109,6 +78,8 @@ void MainWindow::on_stopServerButton_clicked()
 {
     controlBoxServer->stopServer();
     delete controlBoxServer;
+
+    isServer=false;
 }
 
 
@@ -117,9 +88,44 @@ void MainWindow::on_stopServerButton_clicked()
 THIS IS THE DIGITAALLLL TAB
 */
 
+void MainWindow::updateIconStatus() //on_TimerTimeout()
+{
+    timer->stop();
+    //qDebug()<<"Timeout";
 
+    bool inStatusVector[8];
+    for(int i=0;i<8;i++){
+        inStatusVector[i]=digitalInputModule->readInputState(i);
+    }
 
-//Save Settings
+    machineInputStatus->readStatusVector(inStatusVector);
+
+    if(isStatus->isMachineStatus){
+        machineInputStatus->updateStatusVector();
+        if(machineInputStatus->indicatorRed){
+            ui->inputTable->item(inputstatusItem->machineStatusItem,2)->setBackgroundColor(colors->colorRed);
+            if(isServer)
+                digitalInputModule->updateInput(controlBoxServer->server,"Critical");
+        }else if(machineInputStatus->indicatorYellow){
+            ui->inputTable->item(inputstatusItem->machineStatusItem,2)->setBackgroundColor(colors->colorYellow);
+            if(isServer)
+                digitalInputModule->updateInput(controlBoxServer->server,"Warning");
+        }else if(machineInputStatus->indicatorGreen){
+            ui->inputTable->item(inputstatusItem->machineStatusItem,2)->setBackgroundColor(colors->colorGreen);
+            if(isServer)
+                digitalInputModule->updateInput(controlBoxServer->server,"Operating");
+        }else{
+            ui->inputTable->item(inputstatusItem->machineStatusItem,2)->setBackgroundColor(colors->colorGray);
+            if(isServer)
+                digitalInputModule->updateInput(controlBoxServer->server,"Off");
+        }
+    }else{
+        if(isServer)
+            digitalInputModule->updateInput(controlBoxServer->server,"NotConnected");
+    }
+
+    timer->start(1000);
+}
 
 void MainWindow::ReadUserSavedVariable()
 {

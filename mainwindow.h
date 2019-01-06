@@ -64,6 +64,7 @@ private:
     IsStatus *isStatus;
     InputStatusItem *inputstatusItem;
     int statusItem;
+    bool isServer;
 
     void setupTable();
     void ReadUserSavedVariable();

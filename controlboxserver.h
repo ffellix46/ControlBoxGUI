@@ -22,6 +22,7 @@ public:
     void stopServer();
     void addDigitalOutputModule(DigitalOutputModule *digitalOutputModule);
     void addDigitalInputModule(DigitalInputModule *digitalInputModule);
+    UA_Server *server;
 
 signals:
     void response(const QString &s);
@@ -29,7 +30,6 @@ signals:
     void timeout(const QString &s);
 
 private:
-    UA_Server *server;
     UA_ServerConfig *config;
     int waitTimeout;
     QMutex mutex;
